@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 var list = [
     {
@@ -17,9 +18,11 @@ export default class List extends Component {
       <div className='row'>
         <div className='col-md-12'>
             <h1>Фильмы:</h1>
-                {list.map(item => {
-                    return <li key={item.id}>{item.title}</li>
-                })}
+                <ul>
+                    {list.map(item => {
+                        return <li key={item.id}><Link to={`/${item.id}`}>{item.title}</Link></li>
+                    })}
+                </ul>
         </div>
       </div>
     )
