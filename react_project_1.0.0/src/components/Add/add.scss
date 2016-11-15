@@ -1,0 +1,13 @@
+.form-wrap {
+    width: 50%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form__inputs {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 20px auto;
+}

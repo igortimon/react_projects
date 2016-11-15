@@ -1,0 +1,22 @@
+$containerBorder: 1px solid #000;
+
+.container {
+    margin-top: 20px;
+    -webkit-box-shadow: 0px 0px 19px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 19px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 19px -5px rgba(0,0,0,0.75);
+}
+
+.nav__link {
+    font-size: 24px;
+}
+
+.nav {
+    margin-top: 5px;
+    background-color: #507299;
+    border-radius: 5px;
+}
+
+.nav__link {
+    color: #fff;
+}
