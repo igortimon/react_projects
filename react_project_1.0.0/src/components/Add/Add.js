@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as listActions from '../../actions/listActions'
-import configureStore from '../../store/configureStore'
 
 import './add.scss'
 
@@ -12,7 +11,7 @@ class Add extends Component {
     constructor(props){
         super(props);
         this.handlerAdd = this.handlerAdd.bind(this);
-        this.add = this.props.listActions.addNewFilm
+        this.add = this.props.listActions.addRemFilm
     }
 
     handlerAdd(e) {
@@ -24,7 +23,8 @@ class Add extends Component {
         newFilm.Format = document.getElementsByClassName('form-control format')[0].value;
         newFilm.Stars = document.getElementsByClassName('form-control actors')[0].value.split(',');
 
-        let currState =configureStore().getState();
+        let currState = this.props.currList;
+        currState.currentList.push(newFilm);
         currState.list.push(newFilm);
         this.add(currState);
 
@@ -66,7 +66,7 @@ class Add extends Component {
 
 function mapStateToProps (state) {
   return {
-    displayedList: state.list
+    currList: state
   }
 }
 

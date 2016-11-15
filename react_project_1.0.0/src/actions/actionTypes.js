@@ -1,2 +1,2 @@
-export const ADD_NEW_FILM = 'ADD_NEW_FILM'
+export const ADD_REMOVE_FILM = 'ADD_REMOVE_FILM'
 export const SEARCH = 'SEARCH'

@@ -1,9 +1,9 @@
-import { ADD_NEW_FILM, SEARCH } from './actionTypes'
+import { ADD_REMOVE_FILM, SEARCH } from './actionTypes'
 
-export function addNewFilm(newFilm) {
+export function addRemFilm(newFilm) {
 
   return {
-    type: ADD_NEW_FILM,
+    type: ADD_REMOVE_FILM,
     payload: newFilm
   }
 

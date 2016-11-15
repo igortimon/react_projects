@@ -3,54 +3,48 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as listActions from '../../actions/listActions'
-import configureStore from '../../store/configureStore'
-
-
 
 import './list.scss'
 
-// var xhr = new XMLHttpRequest();
-// xhr.open('GET', 'films.json', false);
-// xhr.send();
-// export const LIST = JSON.parse(xhr.responseText);
 
 class List extends Component {
     constructor(props){
         super(props);
-        // this.state = {
-        //     displayedList: LIST
-        // };
         this.handlerRemove = this.handlerRemove.bind(this);
-        this.remove = this.props.listActions.addNewFilm
+        this.handlerSearch = this.handlerSearch.bind(this);
+        this.remove = this.props.listActions.addRemFilm;
+        this.search = this.props.listActions.search;
     }
 
-    // searchInTitles(e) {
-    //     var displayedList, searchQuery, searchValue;
-    //     if(e.target.className == 'form-control title__input') {
-    //         searchQuery = e.target.value.toLowerCase();
-    //         displayedList = LIST.filter((el) => {
-    //             searchValue = el.Title.toLowerCase();
-    //             return searchValue.indexOf(searchQuery) !== -1;
-    //         })
-    //     }
-    //
-    //     if(e.target.className == 'form-control actor__input') {
-    //         searchQuery = e.target.value.toLowerCase();
-    //         displayedList = LIST.filter((el) => {
-    //             searchValue = el.Stars.filter((element) => {
-    //                     return element.toLowerCase().indexOf(searchQuery) !== -1;
-    //             });
-    //             return searchValue.length !== 0;
-    //         });
-    //     }
-    //
-    //     this.setState({
-    //         displayedList: displayedList
-    //     })
-    // }
+    handlerSearch(e) {
+        let displayedList, searchQuery, searchValue;
+        let currList = this.props.currList;
+        if(e.target.className == 'form-control title__input') {
+            searchQuery = e.target.value.toLowerCase();
+            displayedList = currList.list.filter((el) => {
+                searchValue = el.Title.toLowerCase();
+                return searchValue.indexOf(searchQuery) !== -1;
+            })
+        }
+
+        if(e.target.className == 'form-control actor__input') {
+            searchQuery = e.target.value.toLowerCase();
+            displayedList = currList.list.filter((el) => {
+                searchValue = el.Stars.filter((element) => {
+                        return element.toLowerCase().indexOf(searchQuery) !== -1;
+                });
+                return searchValue.length !== 0;
+            });
+        }
+
+        this.search(displayedList);
+
+    }
+
     handlerRemove(e) {
         let i = parseInt(e.target.id);
-        let currState =configureStore().getState();
+        let currState = this.props.currList;
+        currState.currentList.splice(i, 1);
         currState.list.splice(i, 1);
         this.remove(currState);
     }
@@ -62,16 +56,16 @@ class List extends Component {
                     <div className='list__search'>
                         <div>
                             <h5>Title</h5>
-                            <input type='text' className='form-control title__input' onChange={this.searchInTitles}/>
+                            <input type='text' className='form-control title__input' onChange={this.handlerSearch}/>
                         </div>
                         <div>
                             <h5>Actor</h5>
-                            <input type='text' className='form-control actor__input' onChange={this.searchInTitles}/>
+                            <input type='text' className='form-control actor__input' onChange={this.handlerSearch}/>
                         </div>
                     </div>
                     <h3 className='list__title'>Films list</h3>
                     <ul className='list'>
-                        {this.props.displayedList.list.sort((a, b) => {
+                        {this.props.currList.currentList.sort((a, b) => {
                             if (a.Title < b.Title) return -1;
                             if (a.Title > b.Title) return 1;
                             return 0;
@@ -88,7 +82,7 @@ class List extends Component {
 
 function mapStateToProps (state) {
   return {
-    displayedList: state
+      currList: state
   }
 }
 
