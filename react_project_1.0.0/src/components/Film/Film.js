@@ -5,7 +5,7 @@ import './film.scss'
 
 class Film extends Component {
     render() {
-        const renderList = this.props.list;
+        const renderList = this.props.currList.currentList;
         return (
             <div className='info'>
                 <h2 className='info__title'>
@@ -30,7 +30,7 @@ class Film extends Component {
 
 function mapStateToProps (state) {
   return {
-    list: state.list
+    currList: state
   }
 }
 

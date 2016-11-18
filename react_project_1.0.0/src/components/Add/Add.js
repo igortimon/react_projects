@@ -41,19 +41,19 @@ class Add extends Component {
                 <form>
                     <div className='form__inputs'>
                         <div>
-                            <h4>Enter film title</h4>
+                            <h4>Title</h4>
                             <input type='text' className='form-control title' />
                         </div>
                         <div>
-                            <h4>Enter film year</h4>
+                            <h4>Year</h4>
                             <input type='text' className='form-control year' />
                         </div>
                         <div>
-                            <h4>Enter film format</h4>
+                            <h4>Format</h4>
                             <input type='text' className='form-control format' />
                         </div>
                         <div>
-                            <h4>Enter actors</h4>
+                            <h4>Actors</h4>
                             <input type='text' className='form-control actors' />
                         </div>
                     </div>
