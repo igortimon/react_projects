@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express');
 const app = express();
+const mysql = require('mysql');
 // var fs = require('fs');
 //
 // var toJSON = require('plain-text-data-to-json');
@@ -10,6 +11,18 @@ const app = express();
 // var data = toJSON(doc);
 //
 // fs.writeFileSync('output.json', JSON.stringify(data, null, 2) + '\n');
+
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'timon',
+  password : 'the1992',
+  database: 'films_db'
+});
+
+var query = connection.query('INSERT INTO users SET ?', {name: 'Igor', surname: 'Tymonchuk'}, function(err, result) {
+  console.log(err);
+  console.log(result);
+});
 
 
 (function initWebpack() {
