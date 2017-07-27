@@ -9,7 +9,7 @@ export default class App extends Component {
         <div className='container'>
             <ul className='nav nav-pills'>
                 <li><Link className='nav__link' to='/'>Home</Link></li>
-                <li><Link className='nav__link' to='/list'>Films</Link></li>
+                <li><Link className='nav__link' to='/film'>Films</Link></li>
                 <li><Link className='nav__link' to='/add'>Add</Link></li>
             </ul>
 

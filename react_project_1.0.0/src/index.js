@@ -18,8 +18,8 @@ render(
         <Router history={browserHistory}>
           <Route path='/' component={App}>
             <IndexRoute component={Home} />
-            <Route path='/list' component={List}>
-                <Route path='/film/:film' component={Film} />
+            <Route path='/film' component={List}>
+                <Route path='/film-:film' component={Film} />
             </Route>
             <Route path='/add' component={Add} />
           </Route>

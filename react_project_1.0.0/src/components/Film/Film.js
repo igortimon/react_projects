@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Pagination from '../Pagination/Pagination'
 import './film.scss'
 
 
@@ -23,6 +24,7 @@ class Film extends Component {
                         }
                     })}
                 </h2>
+                <Pagination currPage={this.props.params.film}/>
             </div>
         )
     }

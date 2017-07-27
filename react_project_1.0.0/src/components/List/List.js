@@ -70,7 +70,7 @@ class List extends Component {
                             if (a.Title > b.Title) return 1;
                             return 0;
                         }).map((item, index) => {
-                            return <li className='list__item' key={index}><Link to={`film/${index}`}>{item.Title}</Link><span title='Remove film' className='glyphicon glyphicon-remove' id={`${index}-remove`} onClick={this.handlerRemove}></span></li>
+                            return <li className='list__item' key={index}><Link to={`/film-${index}`}>{item.Title}</Link><span title='Remove film' className='glyphicon glyphicon-remove' id={`${index}-remove`} onClick={this.handlerRemove}></span></li>
                         })}
                     </ul>
                 </div>
